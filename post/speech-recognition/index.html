@@ -1,1 +1,213 @@
-<placeholder></placeholder>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Project 2: TensorFlow Speech Recognition | Deepak Sathya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="A tool that predicts speech and audio inputs using TensorFlow and MFCC-based feature extraction.">
+  <meta name="theme-color" content="#0f172a">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-soft: #eef2ff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --heading: #1e3a8a;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --hero-bg: linear-gradient(rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.72)), url("https://Deepak-Sathyanarayanan.github.io/mywebsite/images/prj1_01_speech_rec.jpeg") center/cover no-repeat;
+      --max-width: 980px;
+      --code-bg: #111827;
+      --code-text: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+    img { max-width: 100%; display: block; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar { position: sticky; top: 0; z-index: 1000; background: rgba(15, 23, 42, 0.96); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
+    .nav { width: min(92%, 1120px); margin: 0 auto; padding: 16px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { color: #fff; font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+    .hero { background: var(--hero-bg); color: #fff; }
+    .hero-inner { width: min(92%, 1120px); margin: 0 auto; padding: 86px 0 76px; text-align: center; }
+    .eyebrow { display: inline-block; margin-bottom: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.16); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero h1 { margin: 0 0 14px; font-size: 3rem; line-height: 1.15; font-weight: 800; }
+    .hero p { max-width: 860px; margin: 0 auto 24px; color: rgba(255,255,255,0.92); font-size: 1.08rem; }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-block; padding: 12px 18px; border-radius: 10px; font-weight: 700; border: 1px solid transparent; transition: 0.2s ease; text-decoration: none; }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-light { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.3); }
+    .container { width: min(92%, var(--max-width)); margin: 0 auto; padding: 54px 0 70px; }
+    .meta-card, .section-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); }
+    .meta-card { padding: 22px 24px; margin-top: -36px; position: relative; z-index: 5; }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+    .meta-item h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--heading); }
+    .meta-item p, .meta-item div { margin: 0; color: var(--muted); font-size: 0.96rem; }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { display: inline-block; padding: 6px 10px; border-radius: 999px; background: var(--surface-soft); color: var(--heading); font-size: 0.84rem; font-weight: 700; }
+    .section-card { padding: 28px; margin-top: 24px; }
+    h2 { margin: 0 0 12px; font-size: 1.7rem; color: var(--heading); }
+    h3 { margin: 20px 0 10px; color: #1f2937; }
+    p { margin: 0 0 14px; }
+    ul { margin: 0 0 18px 20px; padding: 0; }
+    li { margin-bottom: 10px; }
+    .architecture-box { background: #0f172a; color: #e2e8f0; border-radius: 16px; padding: 18px 20px; font-weight: 700; overflow-wrap: anywhere; }
+    .screenshot { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; margin: 14px 0 20px; }
+    .screenshot img { width: 100%; height: auto; }
+    .screenshot-caption { padding: 12px 14px; color: var(--muted); font-size: 0.95rem; }
+    .placeholder { border: 1px dashed #cbd5e1; border-radius: 16px; padding: 18px; background: #f8fafc; color: var(--muted); font-weight: 600; }
+    pre { margin: 0 0 16px; padding: 16px 18px; border-radius: 14px; background: var(--code-bg); color: var(--code-text); overflow-x: auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .footer-cta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+    footer { border-top: 1px solid var(--border); background: #fff; }
+    .footer-inner { width: min(92%, 1120px); margin: 0 auto; padding: 22px 0; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; color: var(--muted); }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 720px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .hero-inner { padding: 70px 0 58px; }
+      .hero h1 { font-size: 2.15rem; }
+      .container { padding-top: 34px; }
+      .section-card, .meta-card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav">
+      <a class="brand" href="https://deepak-sathyanarayanan.github.io/mywebsite/">Deepak Sathya</a>
+      <ul class="nav-links">
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#about">About</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#skills">Skills</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Projects</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#contact">Contact</a></li>
+        <li><a href="https://github.com/Deepak-Sathyanarayanan/Speech_Recognition_using_TF" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Project 2</div>
+      <h1>TensorFlow Speech Recognition</h1>
+      <p>Built an end-to-end audio classification workflow that transforms spoken input into MFCC-based features and predicts commands using TensorFlow, then productionized the model with FastAPI.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/Speech_Recognition_using_TF" target="_blank" rel="noopener">View GitHub Repository</a>
+        <a class="btn btn-light" href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Back to Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="meta-card">
+      <div class="meta-grid">
+        <div class="meta-item">
+          <h3>Category</h3>
+          <p>Audio ML / Deep Learning</p>
+        </div>
+        <div class="meta-item">
+          <h3>Core Stack</h3>
+          <p>Python, TensorFlow, MFCC, FastAPI</p>
+        </div>
+        <div class="meta-item">
+          <h3>Highlights</h3>
+          <div class="tag-wrap">
+            <span class="tag">TensorFlow</span>
+<span class="tag">FastAPI</span>
+<span class="tag">Audio ML</span>
+<span class="tag">MFCC</span>
+<span class="tag">Speech Commands</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Overview</h2>
+      <p>This project focuses on recognizing spoken audio inputs by converting raw audio into frequency-based features and training a deep learning model to classify commands.</p>
+<p>The workflow uses speech data provided by Google and extracts MFCC features before feeding them into a TensorFlow model. The final model was also exposed through FastAPI, making the project an end-to-end machine learning application rather than only a notebook experiment.</p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Predicts spoken audio commands from one-second recordings</li>
+<li>Uses the Google Speech Commands dataset as the training source</li>
+<li>Converts audio into MFCC frequency representations for modeling</li>
+<li>Applies TensorFlow-based deep learning for classification</li>
+<li>Productionized with FastAPI for serving predictions</li>
+      </ul>
+
+      <h2>Architecture</h2>
+      <div class="architecture-box">Audio Files → MFCC Feature Extraction → TensorFlow Model → Predicted Speech Command</div>
+
+      <h2 style="margin-top: 28px;">Dataset</h2>
+      <p>The project uses Google&#x27;s Speech Commands dataset, a public collection created to support voice-command recognition research.</p>
+<p>According to the original project page, the dataset contains roughly 65,000 one-second utterances of 30 short words spoken by thousands of different people, making it well suited for practical speech classification experiments.</p>
+    </section>
+
+    <section class="section-card">
+      <h2>Screenshots</h2>
+      <h3>Deep Learning Sequential Layers</h3>
+<div class="screenshot">
+<img src="https://Deepak-Sathyanarayanan.github.io/mywebsite/images/prj1_02_Speach_dataset_layers.png" alt="Deep Learning Sequential Layers">
+<div class="screenshot-caption">Model architecture view showing the sequential deep learning setup used for speech classification.</div>
+</div>
+<h3>Sample Predictions</h3>
+<div class="screenshot">
+<img src="https://Deepak-Sathyanarayanan.github.io/mywebsite/images/prj1_03_Speach_dataset_prediction.png" alt="Sample Predictions">
+<div class="screenshot-caption">Prediction output illustrating how the trained model classifies spoken inputs.</div>
+</div>
+    </section>
+
+    <section class="section-card">
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>Python</li>
+<li>TensorFlow</li>
+<li>MFCC-based audio feature engineering</li>
+<li>FastAPI</li>
+      </ul>
+
+      <h2>How to Run</h2>
+      <pre><code># Clone repository
+git clone https://github.com/Deepak-Sathyanarayanan/Speech_Recognition_using_TF.git
+cd Speech_Recognition_using_TF
+
+# Follow the repository instructions to install dependencies
+# and run the training / inference workflow.</code></pre>
+
+      <h2>Key Highlights</h2>
+      <ul>
+        <li>Built a complete speech-recognition pipeline from audio preprocessing to inference</li>
+<li>Used MFCC feature extraction to convert raw sound into model-ready input</li>
+<li>Extended the project beyond training by serving predictions through FastAPI</li>
+<li>Created a practical foundation for more advanced voice-interface applications</li>
+      </ul>
+
+      <div class="footer-cta">
+        <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/Speech_Recognition_using_TF" target="_blank" rel="noopener">View GitHub Repository</a>
+        <a class="btn btn-light" style="color:#1e3a8a;border-color:#cbd5e1;background:#fff;" href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Back to Portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© Deepak Sathya</div>
+      <div class="footer-links">
+        <a href="https://deepak-sathyanarayanan.github.io/mywebsite/">Home</a>
+        <a href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Projects</a>
+        <a href="https://www.linkedin.com/in/deepaksathya0602/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Deepak-Sathyanarayanan" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

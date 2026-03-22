@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Deepak Sathya | Data Scientist</title>
+  <title>Deepak Sathya | Senior Data Scientist</title>
   <meta
     name="description"
-    content="Deepak Sathya - Senior Data Scientist specializing in machine learning, NLP, analytics, and data-driven decision-making."
+    content="Deepak Sathya is a Senior Data Scientist with 9+ years of experience across AI, machine learning, NLP, analytics, and cloud-based data products."
   />
 
-  <meta property="og:title" content="Deepak Sathya | Data Scientist" />
+  <meta property="og:title" content="Deepak Sathya | Senior Data Scientist" />
   <meta
     property="og:description"
-    content="Portfolio of Deepak Sathya featuring data science, machine learning, NLP, and analytics projects."
+    content="Portfolio of Deepak Sathya featuring AI, machine learning, NLP, analytics, and end-to-end data science projects."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://deepak-sathyanarayanan.github.io/mywebsite/" />
@@ -35,18 +35,11 @@
       --border: #e5e7eb;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       --max-width: 1120px;
-      --hero-overlay: rgba(0, 0, 0, 0.55);
+      --hero-overlay: rgba(0, 0, 0, 0.56);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -55,19 +48,9 @@
       line-height: 1.6;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .container {
       width: min(92%, var(--max-width));
@@ -117,7 +100,7 @@
     }
 
     .hero {
-      min-height: 78vh;
+      min-height: 80vh;
       background:
         linear-gradient(var(--hero-overlay), var(--hero-overlay)),
         url("https://deepak-sathyanarayanan.github.io/mywebsite/images/01_main_home_cover.jpeg") center/cover no-repeat;
@@ -127,20 +110,32 @@
     }
 
     .hero-inner {
-      max-width: 840px;
-      padding: 72px 0;
+      max-width: 860px;
+      padding: 78px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.2px;
     }
 
     .hero h1 {
-      font-size: 3.2rem;
-      line-height: 1.12;
+      font-size: 3.25rem;
+      line-height: 1.1;
       margin-bottom: 14px;
       font-weight: 800;
     }
 
     .hero .subtitle {
-      font-size: 1.22rem;
-      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 18px;
       font-weight: 600;
     }
@@ -149,7 +144,7 @@
       font-size: 1.08rem;
       max-width: 760px;
       color: rgba(255, 255, 255, 0.92);
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .hero-actions,
@@ -159,9 +154,7 @@
       gap: 12px;
     }
 
-    .hero-actions {
-      margin-bottom: 20px;
-    }
+    .hero-actions { margin-bottom: 20px; }
 
     .btn {
       display: inline-block;
@@ -178,33 +171,16 @@
       transform: translateY(-1px);
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
     .btn-secondary {
       background: rgba(255, 255, 255, 0.12);
       color: #fff;
       border-color: rgba(255, 255, 255, 0.3);
     }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-light {
-      background: #fff;
-      color: var(--primary-dark);
-    }
-
-    .btn-light:hover {
-      background: #eff6ff;
-    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
+    .btn-light { background: #fff; color: var(--primary-dark); }
+    .btn-light:hover { background: #eff6ff; }
 
     .social-pill {
       padding: 10px 14px;
@@ -221,9 +197,7 @@
       text-decoration: none;
     }
 
-    section {
-      padding: 72px 0;
-    }
+    section { padding: 72px 0; }
 
     .section-title {
       font-size: 2rem;
@@ -233,7 +207,7 @@
 
     .section-intro {
       color: var(--muted);
-      max-width: 800px;
+      max-width: 820px;
       margin-bottom: 30px;
     }
 
@@ -244,12 +218,28 @@
       box-shadow: var(--shadow);
     }
 
-    .about-card {
-      padding: 28px;
+    .about-card { padding: 28px; }
+    .about-card p + p { margin-top: 14px; }
+
+    .highlights {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
     }
 
-    .about-card p + p {
-      margin-top: 14px;
+    .highlight {
+      padding: 18px;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .highlight strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
     }
 
     .skills-grid {
@@ -258,35 +248,21 @@
       gap: 20px;
     }
 
-    .skill-card {
-      padding: 24px;
-      background: var(--surface);
-    }
-
+    .skill-card { padding: 24px; }
     .skill-card h3 {
       color: var(--primary);
       margin-bottom: 10px;
       font-size: 1.05rem;
     }
+    .skill-card ul { padding-left: 18px; }
+    .skill-card li { margin-bottom: 8px; }
 
-    .skill-card ul {
-      padding-left: 18px;
-    }
-
-    .skill-card li {
-      margin-bottom: 8px;
-    }
-
-    .projects-wrap {
-      display: grid;
-      gap: 22px;
-    }
+    .projects-wrap { display: grid; gap: 22px; }
 
     .project-card {
       overflow: hidden;
       display: grid;
       grid-template-columns: 340px 1fr;
-      gap: 0;
       background: var(--surface);
     }
 
@@ -302,9 +278,7 @@
       min-height: 240px;
     }
 
-    .project-content {
-      padding: 24px;
-    }
+    .project-content { padding: 24px; }
 
     .project-content h3 {
       margin-bottom: 10px;
@@ -312,14 +286,8 @@
       color: var(--primary-dark);
     }
 
-    .project-content h3 a {
-      color: inherit;
-    }
-
-    .project-content p {
-      color: var(--text);
-      margin-bottom: 14px;
-    }
+    .project-content h3 a { color: inherit; }
+    .project-content p { color: var(--text); margin-bottom: 14px; }
 
     .tags {
       display: flex;
@@ -351,9 +319,7 @@
       gap: 16px;
     }
 
-    .mini-links a {
-      font-weight: 600;
-    }
+    .mini-links a { font-weight: 600; }
 
     .contact-grid {
       display: grid;
@@ -361,10 +327,7 @@
       gap: 20px;
     }
 
-    .contact-card {
-      padding: 24px;
-    }
-
+    .contact-card { padding: 24px; }
     .contact-card h3 {
       color: var(--primary);
       margin-bottom: 8px;
@@ -391,18 +354,11 @@
       flex-wrap: wrap;
     }
 
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.8);
-    }
+    .footer-links a { color: rgba(255, 255, 255, 0.8); }
 
     @media (max-width: 900px) {
-      .project-card {
-        grid-template-columns: 1fr;
-      }
-
-      .project-image img {
-        min-height: 220px;
-      }
+      .project-card { grid-template-columns: 1fr; }
+      .project-image img { min-height: 220px; }
     }
 
     @media (max-width: 768px) {
@@ -411,21 +367,10 @@
         align-items: flex-start;
       }
 
-      .hero {
-        min-height: auto;
-      }
-
-      .hero h1 {
-        font-size: 2.35rem;
-      }
-
-      .hero .subtitle {
-        font-size: 1.05rem;
-      }
-
-      section {
-        padding: 56px 0;
-      }
+      .hero { min-height: auto; }
+      .hero h1 { font-size: 2.35rem; }
+      .hero .subtitle { font-size: 1.05rem; }
+      section { padding: 56px 0; }
     }
   </style>
 </head>
@@ -433,12 +378,13 @@
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="https://deepak-sathyanarayanan.github.io/mywebsite/">Deepak Sathya</a>
-
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="about/">About Page</a></li>
+        <li><a href="contact/">Contact Page</a></li>
         <li>
           <a href="https://deepak-sathyanarayanan.github.io/mywebsite/Resume_Deepak_Sathya.docx" target="_blank">
             Resume
@@ -450,24 +396,19 @@
 
   <section class="hero">
     <div class="container hero-inner">
-      <h1>Hi, I’m Deepak Sathya</h1>
-      <div class="subtitle">Senior Data Scientist | Machine Learning | NLP | Analytics</div>
+      <div class="eyebrow">Senior Data Scientist • AI • Machine Learning • NLP</div>
+      <h1>Building AI and analytics solutions that turn complex data into measurable business impact.</h1>
+      <div class="subtitle">9+ years of experience across defense, banking, financial services, and enterprise analytics.</div>
       <p class="description">
-        I build data-driven solutions that transform complex information into actionable business insights.
-        With experience across banking, financial services, and defense, I specialize in machine learning,
-        NLP, statistical analysis, predictive modeling, and large-scale analytics.
+        I design and deploy machine learning, NLP, and cloud-based data solutions across the full lifecycle —
+        from problem framing and experimentation to production delivery and stakeholder adoption. My recent work
+        spans LLM applications, AWS-native ML workflows, advanced analytics, and decision-support systems.
       </p>
 
       <div class="hero-actions">
         <a class="btn btn-primary" href="#projects">View Projects</a>
-        <a class="btn btn-secondary" href="#contact">Contact Me</a>
-        <a
-          class="btn btn-light"
-          href="https://deepak-sathyanarayanan.github.io/mywebsite/Resume_Deepak_Sathya.docx"
-          target="_blank"
-        >
-          View Resume
-        </a>
+        <a class="btn btn-secondary" href="about/">About Me</a>
+        <a class="btn btn-light" href="https://deepak-sathyanarayanan.github.io/mywebsite/Resume_Deepak_Sathya.docx" target="_blank">View Resume</a>
       </div>
 
       <div class="social-links">
@@ -484,75 +425,88 @@
     <div class="container">
       <h2 class="section-title">About Me</h2>
       <p class="section-intro">
-        I enjoy solving real-world business problems with machine learning, analytics, and data storytelling.
+        A senior data scientist focused on practical AI, scalable analytics, and business-aligned machine learning solutions.
       </p>
 
       <div class="card about-card">
         <p>
-          I’m a data science professional with strong experience in analytics, predictive modeling,
-          natural language processing, and business intelligence. My work has focused on designing
-          solutions that improve decision-making, reduce risk, and generate measurable business value.
+          I currently work as a Senior Data Scientist at GDIT, where I build advanced analytics and AI solutions
+          that support mission-focused decision-making. My background also includes data science roles at ADP and PNC,
+          where I delivered predictive models, analytical frameworks, and data products for large-scale business problems.
         </p>
         <p>
-          I have worked with technologies including Python, SQL, AWS SageMaker, Databricks, Tableau,
-          PySpark, TensorFlow, Keras, and Scikit-learn. My background includes building fraud detection
-          models, sentiment analysis systems, audio classification models, dashboards, and scalable
-          analytical workflows.
+          My experience spans machine learning, large language models, NLP, statistical analysis, cloud platforms,
+          experimentation, and production-grade pipelines. I enjoy translating ambiguous business needs into clear,
+          measurable solutions that improve efficiency, reduce risk, and unlock new capabilities.
         </p>
         <p>
-          I’m especially interested in applying machine learning and NLP to challenging real-world
-          problems while keeping solutions practical, interpretable, and aligned with business goals.
+          I’m especially interested in LLM applications, retrieval-augmented systems, intelligent automation,
+          and modern cloud-first ML platforms such as AWS Bedrock, SageMaker, Databricks, and Spark.
         </p>
+
+        <div class="highlights">
+          <div class="highlight">
+            <strong>Current Focus</strong>
+            AI/ML solutions, NLP workflows, LLM use cases, and enterprise analytics.
+          </div>
+          <div class="highlight">
+            <strong>Industry Experience</strong>
+            Defense, banking, payments, and financial services.
+          </div>
+          <div class="highlight">
+            <strong>Strengths</strong>
+            End-to-end model development, stakeholder communication, and production delivery.
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="skills" style="background: var(--surface-2);">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title">Core Capabilities</h2>
       <p class="section-intro">
-        A blend of machine learning, programming, analytics, and data engineering skills used to
-        build end-to-end data products.
+        A mix of machine learning, cloud engineering, experimentation, and analytics skills used to build real-world data products.
       </p>
 
       <div class="skills-grid">
         <div class="card skill-card">
-          <h3>Machine Learning</h3>
+          <h3>AI & Machine Learning</h3>
           <ul>
             <li>Supervised and unsupervised learning</li>
-            <li>Random Forest, Logistic Regression, Decision Trees</li>
-            <li>Feature engineering and model evaluation</li>
-            <li>Hyperparameter tuning and predictive modeling</li>
+            <li>Predictive modeling and feature engineering</li>
+            <li>Model evaluation, tuning, and deployment</li>
+            <li>Fraud detection, classification, and forecasting</li>
           </ul>
         </div>
 
         <div class="card skill-card">
-          <h3>Programming & Libraries</h3>
+          <h3>NLP & LLM Applications</h3>
           <ul>
-            <li>Python, SQL, R</li>
-            <li>Pandas, NumPy, Scikit-learn, PySpark</li>
-            <li>TensorFlow, Keras, NLTK, Statsmodels</li>
-            <li>Data cleaning and transformation</li>
+            <li>Text preprocessing, embeddings, and vector search</li>
+            <li>Sentiment analysis and document intelligence</li>
+            <li>Retrieval-augmented generation workflows</li>
+            <li>Prompt design and LLM-powered applications</li>
           </ul>
         </div>
 
         <div class="card skill-card">
-          <h3>Cloud & Visualization</h3>
+          <h3>Cloud, Data & Tools</h3>
           <ul>
-            <li>AWS SageMaker, AWS Bedrock, Databricks</li>
-            <li>Tableau, Power BI</li>
-            <li>Dashboard creation and reporting</li>
-            <li>Insight communication and storytelling</li>
+            <li>AWS Bedrock, SageMaker, Databricks, Spark</li>
+            <li>Python, SQL, PySpark, Pandas, Scikit-learn</li>
+            <li>TensorFlow, Keras, FastAPI</li>
+            <li>Tableau, Power BI, dashboarding, and reporting</li>
           </ul>
         </div>
 
         <div class="card skill-card">
-          <h3>Statistics & Big Data</h3>
+          <h3>Analytics & Leadership</h3>
           <ul>
-            <li>EDA, hypothesis testing, ANOVA, chi-square</li>
-            <li>Hive, Spark, Impala, Oozie, Sqoop, HDFS</li>
-            <li>Large-scale data analysis workflows</li>
-            <li>Business-focused analytics problem solving</li>
+            <li>Business problem framing and experimentation</li>
+            <li>Statistical analysis and insight generation</li>
+            <li>Cross-functional collaboration and stakeholder management</li>
+            <li>Turning models into measurable business outcomes</li>
           </ul>
         </div>
       </div>
@@ -563,93 +517,65 @@
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
       <p class="section-intro">
-        A selection of projects that demonstrate my experience in machine learning, NLP,
-        predictive analytics, and applied data science.
+        Selected projects that reflect my work across retrieval systems, speech AI, NLP, and predictive analytics.
       </p>
 
       <div class="projects-wrap">
         <article class="card project-card">
           <div class="project-image">
-            <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-4/">
-              <img
-                src="https://deepak-sathyanarayanan.github.io/mywebsite/images/prj4_01_rag_cover.png"
-                alt="ArXiv Research Assistant RAG project"
-              />
+            <a href="post/arxiv-rag/">
+              <img src="https://deepak-sathyanarayanan.github.io/mywebsite/post/arxiv-rag/assets/api-ask-bad.png" alt="ArXiv Research Assistant RAG project" />
             </a>
           </div>
           <div class="project-content">
-            <h3>
-              <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-4/">
-                Project 1: ArXiv Research Assistant (RAG)
-              </a>
-            </h3>
+            <h3><a href="post/arxiv-rag/">ArXiv Research Assistant (RAG)</a></h3>
             <p>
-              Built an end-to-end Retrieval-Augmented Generation (RAG) pipeline to query and summarize
-              arXiv research papers using semantic search, embeddings, and LLM-based answer generation.
+              Built an end-to-end retrieval-augmented generation workflow to query, retrieve, and summarize
+              arXiv papers using semantic search, embeddings, and LLM-based response generation.
             </p>
             <div class="tags">
               <span class="tag">RAG</span>
               <span class="tag">LLM</span>
               <span class="tag">NLP</span>
-              <span class="tag">Vector Search</span>
+              <span class="tag">Semantic Search</span>
             </div>
-            <a class="btn btn-primary" href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-4/">
-              Read More
-            </a>
+            <a class="btn btn-primary" href="post/arxiv-rag/">Read More</a>
           </div>
         </article>
 
         <article class="card project-card">
           <div class="project-image">
-            <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-1/">
-              <img
-                src="https://deepak-sathyanarayanan.github.io/mywebsite/images/prj1_01_speech_rec.jpeg"
-                alt="TensorFlow Speech Recognition project"
-              />
+            <a href="post/speech-recognition/">
+              <img src="https://deepak-sathyanarayanan.github.io/mywebsite/post/speech-recognition/assets/speech_rec.jpeg" alt="Speech recognition project" />
             </a>
           </div>
           <div class="project-content">
-            <h3>
-              <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-1/">
-                Project 2: TensorFlow Speech Recognition
-              </a>
-            </h3>
+            <h3><a href="post/speech-recognition/">Speech Recognition with TensorFlow</a></h3>
             <p>
-              Built an audio classification model using speech data and MFCC-based frequency features
-              to predict spoken commands. The solution was developed using TensorFlow and productionized
-              with FastAPI, demonstrating an end-to-end machine learning workflow.
+              Developed an audio classification pipeline using MFCC-based feature engineering and TensorFlow
+              to recognize spoken commands, then exposed the model through a FastAPI application.
             </p>
             <div class="tags">
               <span class="tag">TensorFlow</span>
               <span class="tag">FastAPI</span>
               <span class="tag">Audio ML</span>
-              <span class="tag">Speech Recognition</span>
+              <span class="tag">MLOps</span>
             </div>
-            <a class="btn btn-primary" href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-1/">
-              Read More
-            </a>
+            <a class="btn btn-primary" href="post/speech-recognition/">Read More</a>
           </div>
         </article>
 
         <article class="card project-card">
           <div class="project-image">
-            <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-3/">
-              <img
-                src="https://deepak-sathyanarayanan.github.io/mywebsite/images/prj3_01_cover.webp"
-                alt="Twitter Sentiment Analysis project"
-              />
+            <a href="post/twitter-sentiment-analysis/">
+              <img src="https://deepak-sathyanarayanan.github.io/mywebsite/post/twitter-sentiment-analysis/assets/01_cover.webp" alt="Twitter sentiment analysis project" />
             </a>
           </div>
           <div class="project-content">
-            <h3>
-              <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-3/">
-                Project 3: Twitter Sentiment Analysis
-              </a>
-            </h3>
+            <h3><a href="post/twitter-sentiment-analysis/">Twitter Sentiment Analysis</a></h3>
             <p>
-              Built an NLP pipeline to classify sentiment from 1.6 million tweets using text cleaning,
-              lemmatization, embeddings, and deep learning. The project demonstrates practical sentiment
-              analysis at scale using LSTM-based modeling.
+              Built a scalable NLP pipeline to classify sentiment across 1.6 million tweets using text
+              preprocessing, word embeddings, and deep learning techniques for large-scale sentiment modeling.
             </p>
             <div class="tags">
               <span class="tag">NLP</span>
@@ -657,23 +583,18 @@
               <span class="tag">Sentiment Analysis</span>
               <span class="tag">Deep Learning</span>
             </div>
-            <a class="btn btn-primary" href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-3/">
-              Read More
-            </a>
+            <a class="btn btn-primary" href="post/twitter-sentiment-analysis/">Read More</a>
           </div>
         </article>
       </div>
 
       <div class="more-projects">
-        <a class="btn btn-primary" href="https://deepak-sathyanarayanan.github.io/mywebsite/post/">
-          All Projects
-        </a>
-
+        <a class="btn btn-primary" href="post/">All Projects</a>
         <div class="mini-links">
-          <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-4/">ArXiv RAG</a>
-          <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-1/">Speech Recognition</a>
-          <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-3/">Sentiment Analysis</a>
-          <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/project-2/">Fraud Detection</a>
+          <a href="post/arxiv-rag/">ArXiv RAG</a>
+          <a href="post/speech-recognition/">Speech Recognition</a>
+          <a href="post/twitter-sentiment-analysis/">Sentiment Analysis</a>
+          <a href="post/fraud-detection/">Fraud Detection</a>
         </div>
       </div>
     </div>
@@ -681,10 +602,9 @@
 
   <section id="contact" style="background: var(--surface-2);">
     <div class="container">
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title">Let’s Connect</h2>
       <p class="section-intro">
-        I’m open to full-time opportunities, collaborations, and conversations related to data science,
-        analytics, machine learning, and AI.
+        I’m open to senior data science, AI, analytics, and machine learning opportunities, along with consulting and collaboration conversations.
       </p>
 
       <div class="contact-grid">
@@ -707,11 +627,7 @@
           <h3>Professional Links</h3>
           <p><a href="https://www.linkedin.com/in/deepaksathya0602/" target="_blank">LinkedIn</a></p>
           <p><a href="https://github.com/Deepak-Sathyanarayanan" target="_blank">GitHub</a></p>
-          <p>
-            <a href="https://deepak-sathyanarayanan.github.io/mywebsite/Resume_Deepak_Sathya.docx" target="_blank">
-              Resume
-            </a>
-          </p>
+          <p><a href="contact/">Contact Page</a></p>
         </div>
       </div>
     </div>
@@ -720,7 +636,6 @@
   <footer>
     <div class="container footer-inner">
       <div>&copy; 2026 Deepak Sathya. All rights reserved.</div>
-
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/deepaksathya0602/" target="_blank">LinkedIn</a>
         <a href="https://github.com/Deepak-Sathyanarayanan" target="_blank">GitHub</a>

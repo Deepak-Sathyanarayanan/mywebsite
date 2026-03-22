@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <title>AI Research Assistant (RAG over arXiv Papers) | Deepak Sathya</title>
+  <title>Project 1: AI Research Assistant (RAG over arXiv Papers) | Deepak Sathya</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="A GPU-accelerated Retrieval-Augmented Generation (RAG) system that ingests arXiv papers and answers questions with grounded source citations using a local LLM.">
   <meta name="theme-color" content="#0f172a">
@@ -25,8 +25,13 @@
       --code-text: #e5e7eb;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -36,8 +41,19 @@
       line-height: 1.65;
     }
 
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     .topbar {
       position: sticky;
@@ -45,6 +61,7 @@
       z-index: 1000;
       background: rgba(15, 23, 42, 0.96);
       border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
     }
 
     .nav {
@@ -52,18 +69,36 @@
       margin: 0 auto;
       padding: 16px 0;
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      gap: 16px;
     }
 
-    .brand { color: #fff; font-weight: 700; }
+    .brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
 
     .nav-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 18px;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-links a { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
 
     .hero {
       background: var(--hero-bg);
@@ -86,12 +121,14 @@
       border: 1px solid rgba(255,255,255,0.16);
       font-size: 0.85rem;
       font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     .hero h1 {
       margin: 0 0 14px;
       font-size: 3rem;
+      line-height: 1.15;
       font-weight: 800;
     }
 
@@ -99,12 +136,28 @@
       max-width: 860px;
       margin: 0 auto 24px;
       color: rgba(255,255,255,0.92);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
+      display: inline-block;
       padding: 12px 18px;
       border-radius: 10px;
       font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
       text-decoration: none;
     }
 
@@ -113,9 +166,14 @@
       color: #fff;
     }
 
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
     .btn-light {
       background: rgba(255,255,255,0.12);
       color: #fff;
+      border-color: rgba(255,255,255,0.3);
     }
 
     .container {
@@ -124,14 +182,85 @@
       padding: 54px 0 70px;
     }
 
-    .meta-card, .section-card {
+    .meta-card,
+    .section-card {
       background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .meta-card {
+      padding: 22px 24px;
+      margin-top: -36px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+    }
+
+    .meta-item h3 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: var(--heading);
+    }
+
+    .meta-item p,
+    .meta-item div {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--heading);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .section-card {
+      padding: 28px;
       margin-top: 24px;
     }
 
-    h2 { color: var(--heading); }
+    h2 {
+      margin: 0 0 14px;
+      color: var(--heading);
+      font-size: 1.6rem;
+    }
+
+    h3 {
+      margin: 28px 0 12px;
+      color: var(--heading);
+      font-size: 1.15rem;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
 
     .architecture-box {
       padding: 18px 20px;
@@ -141,69 +270,304 @@
       font-weight: 700;
       color: #e2e8f0;
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      overflow-wrap: anywhere;
+    }
+
+    .screenshot {
+      margin-top: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .screenshot img {
+      width: 100%;
+      height: auto;
+    }
+
+    .screenshot-caption {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    pre {
+      margin: 14px 0 18px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--code-bg);
+      color: var(--code-text);
+      overflow-x: auto;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    .inline-link {
+      font-weight: 700;
+    }
+
+    .footer-cta {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     footer {
       background: #0f172a;
-      color: #fff;
-      padding: 28px;
-      text-align: center;
+      color: rgba(255,255,255,0.78);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.82);
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .container {
+        padding-top: 34px;
+      }
+
+      .section-card,
+      .meta-card {
+        padding: 22px;
+      }
     }
   </style>
 </head>
-
 <body>
-
-<header class="topbar">
-  <div class="nav">
-    <a class="brand" href="#">Deepak Sathya</a>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/#projects">Projects</a></li>
-    </ul>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <!-- ✅ FIXED HERE -->
-    <div class="eyebrow">RAG • LLM • NLP</div>
-
-    <h1>AI Research Assistant (RAG over arXiv Papers)</h1>
-
-    <p>
-      A GPU-accelerated Retrieval-Augmented Generation (RAG) system that ingests arXiv papers
-      and answers questions with grounded source citations using a local LLM.
-    </p>
-
-    <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/arxiv-rag" target="_blank">
-      View GitHub Repository
-    </a>
-  </div>
-</section>
-
-<main class="container">
-
-  <section class="section-card">
-    <h2>Overview</h2>
-    <p>
-      End-to-end RAG pipeline using embeddings, FAISS, and local LLM for grounded answers.
-    </p>
-
-    <h2>Architecture</h2>
-
-    <!-- ✅ FIXED HERE -->
-    <div class="architecture-box">
-      arXiv PDFs → Text Extraction → Chunking → Embeddings → FAISS → Retriever → LLM → Answer + Sources
+  <header class="topbar">
+    <div class="nav">
+      <a class="brand" href="https://deepak-sathyanarayanan.github.io/mywebsite/">Deepak Sathya</a>
+      <ul class="nav-links">
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#about">About</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#skills">Skills</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Projects</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/#contact">Contact</a></li>
+        <li><a href="https://github.com/Deepak-Sathyanarayanan/arxiv-rag" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
     </div>
+  </header>
 
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">RAG • LLM • NLP</div>
+      <h1>AI Research Assistant (RAG over arXiv Papers)</h1>
+      <p>
+        A GPU-accelerated Retrieval-Augmented Generation (RAG) system that ingests arXiv papers
+        and answers questions with grounded source citations using a local LLM.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/arxiv-rag" target="_blank" rel="noopener">View GitHub Repository</a>
+        <a class="btn btn-light" href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Back to Projects</a>
+      </div>
+    </div>
   </section>
 
-</main>
+  <main class="container">
+    <section class="meta-card">
+      <div class="meta-grid">
+        <div class="meta-item">
+          <h3>Category</h3>
+          <p>LLM / NLP / Information Retrieval</p>
+        </div>
+        <div class="meta-item">
+          <h3>Core Stack</h3>
+          <p>Python, PyTorch, FAISS, FastAPI</p>
+        </div>
+        <div class="meta-item">
+          <h3>Highlights</h3>
+          <div class="tag-wrap">
+            <span class="tag">RAG</span>
+            <span class="tag">Local LLM</span>
+            <span class="tag">GPU</span>
+            <span class="tag">FAISS</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Sentence Transformers</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  © Deepak Sathya
-</footer>
+    <section class="section-card">
+      <h2>Overview</h2>
+      <p>
+        This project is an end-to-end research assistant built on a Retrieval-Augmented Generation
+        architecture for arXiv papers. It ingests PDFs, extracts and chunks paper text, generates
+        embeddings, indexes them in FAISS, retrieves relevant passages for a user query, and uses a
+        local LLM to generate grounded answers with source citations.
+      </p>
+      <p>
+        The system is designed to provide reliable responses for valid research queries while also
+        handling unsupported or out-of-scope questions without hallucinating.
+      </p>
 
+      <h2>Features</h2>
+      <ul>
+        <li>End-to-end RAG pipeline (PDF → embeddings → FAISS → LLM)</li>
+        <li>Local inference using GPU</li>
+        <li>Grounded answers with source citations</li>
+        <li>FastAPI backend with interactive Swagger UI</li>
+        <li>Handles unsupported queries without hallucination</li>
+      </ul>
+
+      <h2>Architecture</h2>
+      <div class="architecture-box">
+        arXiv PDFs → Text Extraction → Chunking → Embeddings → FAISS → Retriever → LLM → Answer + Sources
+      </div>
+
+      <h2 style="margin-top: 28px;">Dataset</h2>
+      <p>
+        This system was built on a diverse collection of 50+ arXiv papers across:
+      </p>
+      <ul>
+        <li>Machine Learning and LLMs</li>
+        <li>Robotics and Autonomous Systems</li>
+        <li>Computer Vision and 3D Generation</li>
+        <li>Physics and Mathematics</li>
+        <li>Optimization and Systems</li>
+      </ul>
+      <p>
+        Full list:
+        <a class="inline-link" href="./assets/papers.txt" target="_blank" rel="noopener">assets/papers.txt</a>
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Screenshots</h2>
+
+      <h3>API Running</h3>
+      <div class="screenshot">
+        <img src="./assets/root.png" alt="API running screenshot">
+        <div class="screenshot-caption">Root endpoint showing the API is running successfully.</div>
+      </div>
+
+      <h3>Valid Query (Input)</h3>
+      <div class="screenshot">
+        <img src="./assets/api-ask-good.png" alt="Valid query input screenshot">
+        <div class="screenshot-caption">Example of a valid research query submitted through the FastAPI Swagger UI.</div>
+      </div>
+
+      <h3>Valid Query (Answer with Sources)</h3>
+      <div class="screenshot">
+        <img src="./assets/api-good-response.png" alt="Valid query response screenshot">
+        <div class="screenshot-caption">Grounded response showing retrieved context and source citations.</div>
+      </div>
+
+      <p>
+        Valid Response:
+        <a class="inline-link" href="./assets/valid-response.json" target="_blank" rel="noopener">assets/valid-response.json</a>
+      </p>
+
+      <h3>Unsupported Query (Input)</h3>
+      <div class="screenshot">
+        <img src="./assets/api-ask-bad.png" alt="Unsupported query input screenshot">
+        <div class="screenshot-caption">Example of an unsupported query that falls outside the indexed research domain.</div>
+      </div>
+
+      <h3>Unsupported Query (Handled Correctly)</h3>
+      <div class="screenshot">
+        <img src="./assets/api-bad-response.png" alt="Unsupported query handled correctly screenshot">
+        <div class="screenshot-caption">The system declines unsupported questions instead of hallucinating an answer.</div>
+      </div>
+
+      <p>
+        Unsupported Response:
+        <a class="inline-link" href="./assets/unsupported-response.json" target="_blank" rel="noopener">assets/unsupported-response.json</a>
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>Python</li>
+        <li>PyTorch</li>
+        <li>Hugging Face Transformers</li>
+        <li>FAISS</li>
+        <li>FastAPI</li>
+        <li>Sentence Transformers</li>
+      </ul>
+
+      <h2>How to Run</h2>
+      <pre><code># Clone repository
+git clone https://github.com/Deepak-Sathyanarayanan/arxiv-rag.git
+cd arxiv-rag
+
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run API
+uvicorn src.api:app --reload</code></pre>
+
+      <p>
+        Open:
+        <a class="inline-link" href="http://127.0.0.1:8000/docs" target="_blank" rel="noopener">http://127.0.0.1:8000/docs</a>
+      </p>
+
+      <h2>Key Highlights</h2>
+      <ul>
+        <li>Built a complete RAG pipeline using local LLMs</li>
+        <li>Implemented semantic search using FAISS</li>
+        <li>Enabled GPU-based inference for efficient processing</li>
+        <li>Designed the system to avoid hallucinations using retrieval constraints</li>
+        <li>Evaluated on a diverse multi-domain research dataset</li>
+      </ul>
+
+      <div class="footer-cta">
+        <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/arxiv-rag" target="_blank" rel="noopener">View GitHub Repository</a>
+        <a class="btn btn-light" style="color:#1e3a8a;border-color:#cbd5e1;background:#fff;" href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Back to Portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© Deepak Sathya</div>
+      <div class="footer-links">
+        <a href="https://deepak-sathyanarayanan.github.io/mywebsite/">Home</a>
+        <a href="https://deepak-sathyanarayanan.github.io/mywebsite/#projects">Projects</a>
+        <a href="https://www.linkedin.com/in/deepaksathya0602/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Deepak-Sathyanarayanan" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

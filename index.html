@@ -1,3 +1,8 @@
+Here is the complete updated `index.html` with a new **“More about me”** button added below the About section cards, linking to:
+
+`https://deepak-sathyanarayanan.github.io/mywebsite/about/`
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,12 +178,15 @@
 
     .btn-primary { background: var(--primary); color: #fff; }
     .btn-primary:hover { background: var(--primary-dark); }
+
     .btn-secondary {
       background: rgba(255, 255, 255, 0.12);
       color: #fff;
       border-color: rgba(255, 255, 255, 0.3);
     }
+
     .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
+
     .btn-light { background: #fff; color: var(--primary-dark); }
     .btn-light:hover { background: #eff6ff; }
 
@@ -242,6 +250,22 @@
       font-size: 1.05rem;
     }
 
+    .about-more {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .about-more .btn {
+      background: #ffffff;
+      color: var(--primary-dark);
+      border: 1px solid #cbd5e1;
+    }
+
+    .about-more .btn:hover {
+      background: #f8fafc;
+    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -249,11 +273,13 @@
     }
 
     .skill-card { padding: 24px; }
+
     .skill-card h3 {
       color: var(--primary);
       margin-bottom: 10px;
       font-size: 1.05rem;
     }
+
     .skill-card ul { padding-left: 18px; }
     .skill-card li { margin-bottom: 8px; }
 
@@ -328,6 +354,7 @@
     }
 
     .contact-card { padding: 24px; }
+
     .contact-card h3 {
       color: var(--primary);
       margin-bottom: 8px;
@@ -458,6 +485,10 @@
             End-to-end model development, stakeholder communication, and production delivery.
           </div>
         </div>
+
+        <div class="about-more">
+          <a class="btn" href="https://deepak-sathyanarayanan.github.io/mywebsite/about/">More about me</a>
+        </div>
       </div>
     </div>
   </section>
@@ -524,7 +555,7 @@
         <article class="card project-card">
           <div class="project-image">
             <a href="post/arxiv-rag/">
-              <img src="https://deepak-sathyanarayanan.github.io/mywebsite/post/arxiv-rag/assets/rag_cover.png" alt="ArXiv Research Assistant RAG project" />
+              <img src="https://deepak-sathyanarayanan.github.io/mywebsite/post/arxiv-rag/assets/api-ask-bad.png" alt="ArXiv Research Assistant RAG project" />
             </a>
           </div>
           <div class="project-content">
@@ -647,3 +678,4 @@
   </footer>
 </body>
 </html>
+```

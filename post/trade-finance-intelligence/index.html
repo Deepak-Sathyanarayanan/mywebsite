@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Trade Finance Intelligence Platform | Deepak Sathya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="An AI-powered trade finance document intelligence platform for classifying documents, extracting entities, semantic search, and RAG-based question answering.">
+  <meta name="theme-color" content="#0f172a">
+
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-soft: #eef2ff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --heading: #1e3a8a;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --hero-bg: linear-gradient(135deg, #020617 0%, #1e3a8a 55%, #2563eb 100%);
+      --max-width: 980px;
+      --code-bg: #111827;
+      --code-text: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.96);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero {
+      background: var(--hero-bg);
+      color: #fff;
+    }
+
+    .hero-inner {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      padding: 86px 0 76px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 3rem;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 860px;
+      margin: 0 auto 24px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-light {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+      padding: 54px 0 70px;
+    }
+
+    .meta-card,
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .meta-card {
+      padding: 22px 24px;
+      margin-top: -36px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+    }
+
+    .meta-item h3 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: var(--heading);
+    }
+
+    .meta-item p,
+    .meta-item div {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--heading);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .section-card {
+      padding: 28px;
+      margin-top: 24px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--heading);
+      font-size: 1.6rem;
+    }
+
+    h3 {
+      margin: 28px 0 12px;
+      color: var(--heading);
+      font-size: 1.15rem;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul {
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .architecture-box {
+      padding: 18px 20px;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      font-weight: 700;
+      color: #e2e8f0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      overflow-wrap: anywhere;
+    }
+
+    pre {
+      margin: 14px 0 18px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--code-bg);
+      color: var(--code-text);
+      overflow-x: auto;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    .screenshot {
+      margin-top: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .screenshot img {
+      width: 100%;
+      height: auto;
+    }
+
+    .screenshot-caption {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .footer-cta {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer {
+      background: #0f172a;
+      color: rgba(255,255,255,0.78);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.82);
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .container {
+        padding-top: 34px;
+      }
+
+      .section-card,
+      .meta-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="nav">
+      <a class="brand" href="https://deepak-sathyanarayanan.github.io/mywebsite/">Deepak Sathya</a>
+      <ul class="nav-links">
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/">Home</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/about/">About</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/">Projects</a></li>
+        <li><a href="https://deepak-sathyanarayanan.github.io/mywebsite/contact/">Contact</a></li>
+        <li><a href="https://github.com/Deepak-Sathyanarayanan/trade-finance-intelligence" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Document AI • RAG • Trade Finance</div>
+      <h1>Trade Finance Intelligence Platform</h1>
+      <p>
+        An AI-powered document intelligence platform for trade finance workflows, combining OCR,
+        document classification, entity extraction, semantic search, and retrieval-augmented question answering.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/trade-finance-intelligence" target="_blank" rel="noopener">View GitHub Repository</a>
+        <a class="btn btn-light" href="https://deepak-sathyanarayanan.github.io/mywebsite/post/">Back to Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="meta-card">
+      <div class="meta-grid">
+        <div class="meta-item">
+          <h3>Category</h3>
+          <p>Document AI / NLP / RAG</p>
+        </div>
+        <div class="meta-item">
+          <h3>Core Stack</h3>
+          <p>Python, FastAPI, LayoutLMv3, ChromaDB</p>
+        </div>
+        <div class="meta-item">
+          <h3>Highlights</h3>
+          <div class="tag-wrap">
+            <span class="tag">OCR</span>
+            <span class="tag">LayoutLMv3</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Semantic Search</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">ChromaDB</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Overview</h2>
+      <p>
+        This project is an end-to-end AI platform for processing trade finance documents such as
+        commercial invoices, bills of lading, letters of credit, and packing lists. It is designed
+        to extract structured information from complex financial documents and make the document
+        collection searchable and queryable.
+      </p>
+      <p>
+        The platform combines OCR, layout-aware document classification, entity extraction,
+        vector search, and RAG-style question answering to support faster review of trade
+        finance document packages.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Classifies trade finance documents into supported document types.</li>
+        <li>Extracts key entities such as invoice numbers, supplier names, buyers, dates, totals, ports, and shipment details.</li>
+        <li>Indexes document text into a vector database for semantic search.</li>
+        <li>Supports retrieval-augmented question answering over document collections.</li>
+        <li>Provides API endpoints through FastAPI and interactive Swagger UI.</li>
+        <li>Includes synthetic trade finance documents for demonstration and testing.</li>
+      </ul>
+
+      <h2>Architecture</h2>
+      <div class="architecture-box">
+        Trade Finance Documents → OCR → Layout-Aware Classification → Entity Extraction → ChromaDB Vector Index → Semantic Search / RAG → Answers + Evidence
+      </div>
+
+      <h2 style="margin-top: 28px;">Document Types</h2>
+      <ul>
+        <li>Commercial invoices</li>
+        <li>Bills of lading</li>
+        <li>Letters of credit</li>
+        <li>Packing lists</li>
+      </ul>
+    </section>
+
+    <section class="section-card">
+      <h2>System Capabilities</h2>
+
+      <h3>Document Classification</h3>
+      <p>
+        The system uses document text and layout signals to identify the type of trade finance
+        document being processed. This creates the foundation for downstream extraction and search.
+      </p>
+
+      <h3>Entity Extraction</h3>
+      <p>
+        The platform extracts structured entities from unstructured documents, helping convert
+        trade finance paperwork into machine-readable data that can support review, analysis,
+        and automation.
+      </p>
+
+      <h3>Semantic Search</h3>
+      <p>
+        Extracted document text is embedded and stored in a vector database, allowing users to
+        search by meaning rather than exact keywords.
+      </p>
+
+      <h3>RAG-Based Question Answering</h3>
+      <p>
+        The platform retrieves relevant document context and uses it to answer questions about
+        the trade finance document collection with supporting evidence.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>Python</li>
+        <li>FastAPI</li>
+        <li>LayoutLMv3</li>
+        <li>OCR-based document processing</li>
+        <li>Sentence Transformers / embeddings</li>
+        <li>ChromaDB vector database</li>
+        <li>Retrieval-Augmented Generation workflows</li>
+      </ul>
+
+      <h2>How to Run</h2>
+      <pre><code># Clone repository
+git clone https://github.com/Deepak-Sathyanarayanan/trade-finance-intelligence.git
+cd trade-finance-intelligence
+
+# Create virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run API
+uvicorn app.main:app --reload</code></pre>
+
+      <p>
+        Open the FastAPI documentation at:
+        <a href="http://127.0.0.1:8000/docs" target="_blank" rel="noopener">http://127.0.0.1:8000/docs</a>
+      </p>
+
+      <h2>Key Highlights</h2>
+      <ul>
+        <li>Built a practical document intelligence workflow for trade finance use cases.</li>
+        <li>Combined OCR, NLP, layout-aware modeling, and vector search in one system.</li>
+        <li>Designed document-level semantic search and RAG-style question answering.</li>
+        <li>Created a clean FastAPI interface for testing and interacting with the platform.</li>
+        <li>Demonstrated the system using synthetic trade finance document examples.</li>
+      </ul>
+
+      <div class="footer-cta">
+        <a class="btn btn-primary" href="https://github.com/Deepak-Sathyanarayanan/trade-finance-intelligence" target="_blank" rel="noopener">View GitHub Repository</a>
+        <a class="btn btn-light" style="color:#1e3a8a;border-color:#cbd5e1;background:#fff;" href="https://deepak-sathyanarayanan.github.io/mywebsite/post/">Back to Projects</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© Deepak Sathya</div>
+      <div class="footer-links">
+        <a href="https://deepak-sathyanarayanan.github.io/mywebsite/">Home</a>
+        <a href="https://deepak-sathyanarayanan.github.io/mywebsite/post/">Projects</a>
+        <a href="https://www.linkedin.com/in/deepaksathya0602/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Deepak-Sathyanarayanan" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

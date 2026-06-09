@@ -467,6 +467,89 @@
     </section>
 
     <section class="section-card">
+      <h2>Project Details & Screenshots</h2>
+      <p>
+        This section shows the working document AI workflow, including the processing architecture,
+        API interface, document classification and extraction output, semantic search, and ranked
+        RAG-style retrieval results.
+      </p>
+
+      <h3>Architecture</h3>
+      <p>
+        The architecture diagram shows how trade finance documents move through the system:
+        document ingestion, PDF-to-image conversion, Tesseract OCR, layout JSON generation,
+        LayoutLMv3 classification, entity extraction, ChromaDB semantic search, and FastAPI
+        endpoints.
+      </p>
+      <div class="screenshot">
+        <img src="./assets/architecture.png" alt="Trade finance document AI architecture diagram">
+        <div class="screenshot-caption">End-to-end trade finance document processing pipeline.</div>
+      </div>
+
+      <h3>FastAPI Swagger Interface</h3>
+      <p>
+        The Swagger UI screenshot shows the FastAPI application running with interactive endpoints
+        for health checks, document processing, and semantic search.
+      </p>
+      <div class="screenshot">
+        <img src="./assets/swagger_ui.png" alt="FastAPI Swagger UI for trade finance document AI platform">
+        <div class="screenshot-caption">Interactive FastAPI documentation for testing document processing and search endpoints.</div>
+      </div>
+
+      <h3>LayoutLMv3 Classification + Entity Extraction</h3>
+      <p>
+        The classification demo shows a processed trade finance document being classified as a
+        commercial invoice with high confidence, while also extracting business entities such as
+        seller, buyer, amount, country, and goods description.
+      </p>
+      <div class="screenshot">
+        <img src="./assets/classification_demo.png" alt="LayoutLMv3 classification and entity extraction demo">
+        <div class="screenshot-caption">Example document classification and entity extraction response.</div>
+      </div>
+
+      <pre><code>{
+  "classification": {
+    "doc_type": "commercial_invoice",
+    "confidence": 0.9998
+  },
+  "entities": {
+    "seller": "ABC Trading Ltd",
+    "buyer": "XYZ Imports LLC",
+    "amount": "1250000",
+    "country": "Singapore",
+    "goods": "Medical Devices"
+  }
+}</code></pre>
+
+      <h3>Semantic Search API</h3>
+      <p>
+        The semantic search demo shows how the system retrieves relevant trade finance documents
+        using a natural-language query instead of relying only on exact keyword matching.
+      </p>
+      <div class="screenshot">
+        <img src="./assets/semantic_search_demo.png" alt="Semantic search API demo for trade finance documents">
+        <div class="screenshot-caption">Semantic search example for finding pharmaceutical supply invoices.</div>
+      </div>
+
+      <pre><code>{
+  "query": "Find pharmaceutical supply invoices",
+  "n_results": 5
+}</code></pre>
+
+      <h3>RAG Retrieval Output</h3>
+      <p>
+        The terminal output shows ranked retrieval results for a trade finance query, including
+        document type, invoice details, buyer and seller information, goods description, and total
+        amount. This demonstrates how ChromaDB-backed retrieval can surface relevant documents for
+        downstream RAG-style question answering.
+      </p>
+      <div class="screenshot">
+        <img src="./assets/RAG_Terminal_Output.png" alt="RAG terminal retrieval output for trade finance documents">
+        <div class="screenshot-caption">Ranked semantic retrieval output for trade finance document search.</div>
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Tech Stack</h2>
       <ul>
         <li>Python</li>
